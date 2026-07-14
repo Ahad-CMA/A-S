@@ -1,0 +1,871 @@
+/* =========================================================
+   FOR SIDRA ❤️
+   Premium Romantic Website
+   Part 2A
+========================================================= */
+
+/* Google Font Fallback */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+
+    --primary:#ff4f87;
+    --secondary:#ff8db5;
+    --background:#fff4f8;
+    --glass:rgba(255,255,255,.28);
+    --text:#444;
+    --white:#ffffff;
+    --shadow:0 15px 40px rgba(0,0,0,.15);
+
+}
+
+html{
+
+    scroll-behavior:smooth;
+
+}
+
+body{
+
+    font-family:'Poppins',sans-serif;
+
+    background:
+
+    linear-gradient(
+        135deg,
+        #fff7fa,
+        #ffe5ef
+    );
+
+    overflow:hidden;
+
+    color:var(--text);
+
+    width:100vw;
+
+    height:100vh;
+
+}
+
+/* ========================= */
+
+main{
+
+    width:100%;
+    height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    position:relative;
+
+}
+
+/* ========================= */
+
+.page{
+
+    position:absolute;
+
+    width:100%;
+    height:100%;
+
+    display:none;
+
+    justify-content:center;
+    align-items:center;
+
+    padding:25px;
+
+}
+
+.page.active{
+
+    display:flex;
+
+}
+
+/* ========================= */
+
+.background-blur{
+
+    position:absolute;
+
+    inset:0;
+
+    backdrop-filter:blur(20px);
+
+    z-index:-1;
+
+}
+
+/* ========================= */
+
+.logo{
+
+    position:absolute;
+
+    top:28px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    font-family:'Great Vibes',cursive;
+
+    font-size:34px;
+
+    color:var(--primary);
+
+    font-weight:bold;
+
+    text-shadow:
+
+    0 5px 20px rgba(255,79,135,.4);
+
+}
+
+/* ========================= */
+
+.glass-card{
+
+    width:100%;
+    max-width:360px;
+
+    background:var(--glass);
+
+    backdrop-filter:blur(20px);
+
+    border-radius:28px;
+
+    padding:28px;
+
+    border:
+
+    1px solid rgba(255,255,255,.45);
+
+    box-shadow:var(--shadow);
+
+    text-align:center;
+
+}
+
+/* ========================= */
+
+.glass-card h1{
+
+    font-family:'Great Vibes',cursive;
+
+    font-size:46px;
+
+    color:var(--primary);
+
+    margin-bottom:10px;
+
+}
+
+.glass-card h2{
+
+    color:var(--primary);
+
+    font-size:28px;
+
+    margin-bottom:15px;
+
+}
+
+.glass-card p{
+
+    line-height:1.8;
+
+    font-size:15px;
+
+}
+
+/* ========================= */
+/* Loading Screen */
+/* ========================= */
+
+#loadingScreen{
+
+    position:fixed;
+
+    inset:0;
+
+    background:
+
+    linear-gradient(
+        135deg,
+        #ff5a92,
+        #ff8fb9
+    );
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:9999;
+
+    color:white;
+
+}
+
+.loader-content{
+
+    text-align:center;
+
+}
+
+.loader-heart{
+
+    font-size:70px;
+
+    animation:heartbeat 1s infinite;
+
+}
+
+.loader-content h2{
+
+    margin-top:25px;
+
+    font-size:26px;
+
+    font-family:'Great Vibes',cursive;
+
+}
+
+.loader-content p{
+
+    margin-top:12px;
+
+    font-size:17px;
+
+}
+
+.loader-content span{
+
+    font-weight:bold;
+
+}
+/* =========================================================
+   PART 2B
+   Envelope + Buttons + Hearts
+=========================================================*/
+
+/* ===========================
+   Envelope
+=========================== */
+
+#envelope{
+
+    width:280px;
+    height:190px;
+
+    margin:35px auto;
+
+    position:relative;
+
+    cursor:pointer;
+
+    perspective:1200px;
+
+    transition:.5s;
+
+}
+
+.envelope-back{
+
+    position:absolute;
+
+    inset:0;
+
+    background:#fff;
+
+    border-radius:18px;
+
+    box-shadow:
+
+    0 18px 40px rgba(0,0,0,.15);
+
+}
+
+.envelope-front{
+
+    position:absolute;
+
+    bottom:0;
+
+    width:100%;
+    height:110px;
+
+    background:
+
+    linear-gradient(
+    135deg,
+    #ffd8e5,
+    #ffb8ce);
+
+    clip-path:
+
+    polygon(
+    0 0,
+    100% 0,
+    50% 100%);
+
+}
+
+.envelope-flap{
+
+    position:absolute;
+
+    top:0;
+
+    width:100%;
+    height:105px;
+
+    background:
+
+    linear-gradient(
+    135deg,
+    #ffc2d8,
+    #ff8db5);
+
+    clip-path:
+
+    polygon(
+    0 0,
+    100% 0,
+    50% 100%);
+
+    transform-origin:top;
+
+    transition:1s;
+
+    z-index:5;
+
+}
+
+#envelope.open .envelope-flap{
+
+    transform:rotateX(180deg);
+
+}
+
+.letter{
+
+    position:absolute;
+
+    left:16px;
+    right:16px;
+
+    top:25px;
+
+    height:145px;
+
+    background:white;
+
+    border-radius:15px;
+
+    padding:18px;
+
+    transition:1s;
+
+    z-index:2;
+
+}
+
+#envelope.open .letter{
+
+    transform:
+
+    translateY(-70px);
+
+}
+
+.letter h3{
+
+    font-family:'Great Vibes',cursive;
+
+    color:var(--primary);
+
+    font-size:30px;
+
+    margin-bottom:12px;
+
+}
+
+.letter p{
+
+    font-size:14px;
+
+    line-height:1.7;
+
+}
+
+/* ===========================
+      Wax Seal
+=========================== */
+
+.seal{
+
+    position:absolute;
+
+    width:52px;
+    height:52px;
+
+    background:
+
+    linear-gradient(
+    #ff477e,
+    #d81b60);
+
+    border-radius:50%;
+
+    left:50%;
+    bottom:38px;
+
+    transform:translateX(-50%);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    color:white;
+
+    font-size:22px;
+
+    box-shadow:
+
+    0 10px 20px rgba(0,0,0,.2);
+
+    z-index:20;
+
+}
+
+/* ===========================
+      Buttons
+=========================== */
+
+button{
+
+    border:none;
+
+    outline:none;
+
+    cursor:pointer;
+
+    margin-top:18px;
+
+    padding:
+
+    15px 28px;
+
+    border-radius:35px;
+
+    background:
+
+    linear-gradient(
+    135deg,
+    var(--primary),
+    var(--secondary));
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    transition:.35s;
+
+    box-shadow:
+
+    0 10px 25px rgba(255,79,135,.35);
+
+}
+
+button:hover{
+
+    transform:
+
+    translateY(-4px)
+    scale(1.03);
+
+}
+
+button:active{
+
+    transform:scale(.96);
+
+}
+
+.question-buttons{
+
+    display:flex;
+
+    gap:15px;
+
+    justify-content:center;
+
+    margin-top:30px;
+
+}
+
+#noBtn{
+
+    background:white;
+
+    color:var(--primary);
+
+    border:2px solid var(--primary);
+
+}
+
+/* ===========================
+     Final Photo
+=========================== */
+
+.final-photo{
+
+    width:170px;
+    height:170px;
+
+    border-radius:25px;
+
+    object-fit:cover;
+
+    margin-bottom:20px;
+
+    border:5px solid white;
+
+    box-shadow:
+
+    0 15px 35px rgba(0,0,0,.15);
+
+}
+
+/* ===========================
+      Floating Hearts
+=========================== */
+
+#heart-container{
+
+    position:fixed;
+
+    inset:0;
+
+    overflow:hidden;
+
+    pointer-events:none;
+
+    z-index:-2;
+
+}
+
+.floating-heart{
+
+    position:absolute;
+
+    bottom:-40px;
+
+    color:#ff7ea8;
+
+    animation:
+
+    floatHeart linear forwards;
+
+    opacity:.45;
+
+}
+/* =========================================================
+   PART 2C
+   Animations + Footer + Premium Effects
+=========================================================*/
+
+/* ===========================
+      Message Text
+=========================== */
+
+.message{
+
+    font-size:15px;
+
+    line-height:1.9;
+
+    color:#555;
+
+    margin:20px 0;
+
+}
+
+/* ===========================
+      Button Group
+=========================== */
+
+.button-group{
+
+    display:flex;
+
+    gap:12px;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    margin-top:25px;
+
+}
+
+/* ===========================
+      Music Button
+=========================== */
+
+#musicButton{
+
+    width:100%;
+
+    margin-top:15px;
+
+    background:
+
+    linear-gradient(
+    135deg,
+    #7b61ff,
+    #9f7aea);
+
+}
+
+/* ===========================
+      Hug Button
+=========================== */
+
+#hugButton{
+
+    width:100%;
+
+    animation:
+
+    heartbeat 2s infinite;
+
+}
+
+/* ===========================
+      Footer
+=========================== */
+
+footer{
+
+    position:fixed;
+
+    bottom:15px;
+
+    width:100%;
+
+    text-align:center;
+
+    color:#888;
+
+    font-size:13px;
+
+    z-index:10;
+
+}
+
+.footerLogo{
+
+    font-family:'Great Vibes',cursive;
+
+    font-size:26px;
+
+    color:var(--primary);
+
+    margin-bottom:6px;
+
+}
+
+/* ===========================
+      Fade Animation
+=========================== */
+
+.page{
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:
+
+    opacity .5s ease,
+
+    visibility .5s ease;
+
+}
+
+.page.active{
+
+    opacity:1;
+
+    visibility:visible;
+
+}
+
+/* ===========================
+      Heart Beat
+=========================== */
+
+@keyframes heartbeat{
+
+0%{
+
+transform:scale(1);
+
+}
+
+25%{
+
+transform:scale(1.08);
+
+}
+
+50%{
+
+transform:scale(.95);
+
+}
+
+75%{
+
+transform:scale(1.1);
+
+}
+
+100%{
+
+transform:scale(1);
+
+}
+
+}
+
+/* ===========================
+      Floating Hearts
+=========================== */
+
+@keyframes floatHeart{
+
+0%{
+
+transform:
+
+translateY(0)
+
+scale(.7)
+
+rotate(0deg);
+
+opacity:0;
+
+}
+
+15%{
+
+opacity:.45;
+
+}
+
+100%{
+
+transform:
+
+translateY(-120vh)
+
+scale(1.4)
+
+rotate(360deg);
+
+opacity:0;
+
+}
+
+}
+
+/* ===========================
+      Mobile Responsive
+=========================== */
+
+@media(max-width:420px){
+
+.glass-card{
+
+padding:22px;
+
+border-radius:24px;
+
+}
+
+.glass-card h1{
+
+font-size:40px;
+
+}
+
+.glass-card h2{
+
+font-size:24px;
+
+}
+
+.logo{
+
+font-size:30px;
+
+}
+
+#envelope{
+
+width:250px;
+
+height:170px;
+
+}
+
+.final-photo{
+
+width:150px;
+
+height:150px;
+
+}
+
+button{
+
+width:100%;
+
+}
+
+.question-buttons{
+
+flex-direction:column;
+
+}
+
+}
+
+/* ===========================
+      Hide Scrollbar
+=========================== */
+
+body::-webkit-scrollbar{
+
+display:none;
+
+}
