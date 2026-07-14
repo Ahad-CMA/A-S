@@ -95,7 +95,7 @@ showPage(pages.question);
 
 startTyping();
 
-},1800);
+},5800);
 
 });
 

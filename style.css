@@ -309,16 +309,28 @@ main{
     background:
 
     linear-gradient(
-    135deg,
-    #ffd8e5,
-    #ffb8ce);
+    15deg,
+    #ffffff,
+    #FDE2E4
+    );
 
-    clip-path:
+    /* clip-path:
 
     polygon(
     0 0,
     100% 0,
-    50% 100%);
+    50% 100%); */
+    transform: rotate(180deg);  
+    clip-path: polygon(
+        0% 0%,
+        100% 0%,
+        100% 100%,
+        65% 100%,
+        50% 60%,
+        35% 100%,
+        0% 100%
+    );
+    z-index: 3;
 
 }
 
@@ -376,9 +388,9 @@ main{
 
     padding:18px;
 
-    transition:1s;
+    transition:10s;
 
-    z-index:2;
+    z-index:1;
 
 }
 
